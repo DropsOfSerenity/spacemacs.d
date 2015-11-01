@@ -17,7 +17,7 @@
       ))
 
 ;; List of packages to exclude.
-(setq rspec-mode-excluded-packages '())
+(setq rspec-mode-excluded-packages '(ruby-test-mode))
 
 (defun rspec-mode/init-rspec-mode ()
   "Initialize rspec-mode with some sane settings and keybindings"
@@ -31,7 +31,7 @@
         "mtt" 'rspec-verify
         "mtf" 'rspec-run-last-failed
         "mtr" 'rspec-rerun
-        "mts" 'rspec-verify-method
+        "mts" 'rspec-verify-single
         "mto" 'rspec-toggle-spec-and-target
         "mtw" 'rspec-find-spec-or-target-other-window)
 
@@ -39,5 +39,9 @@
        rspec-expose-dsl-globally t  ; except Rspec to be exposed globally in project
        compilation-scroll-output t  ; scroll output when running tests automatically
        )
+
+      ;; TODO: don't know how to make this work yet, investigate
+      ;; (eval-after-load 'rspec-mode
+      ;;   '(rspec-install-snippets))
 
       (message "Loaded rspec-mode"))))
